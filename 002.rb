@@ -1,10 +1,8 @@
-def fibonacci(limit)
-  sequence = [1, 2]
-  begin 
-    sequence << sequence.last(2).reduce(:+)
-  end while sequence.last < limit
-  sequence.pop
-  sequence
-end
-
-p fibonacci(4000000).select{|x| x.even?}.reduce(:+)
+fibonacci = Enumerator.new { |y|
+   a, b = 1, 2
+   loop {
+     y << a
+     a, b = b, a + b
+   }
+}
+p fibonacci.take_while { |x| x < 4000000 }.select { |x| x.even? }.reduce(:+)
