@@ -7,3 +7,5 @@ factors = Hash.new(0)
 }
 
 p factors.map { |factor, occurrances| factor ** occurrances }.reduce(:*)
+
+p (1..20).inject(1) { |result, n| result.lcm n }
