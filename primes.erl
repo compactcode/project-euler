@@ -1,5 +1,14 @@
 -module(primes).
--export([is_prime/1]).
+-export([upto/1, is_prime/1]).
+
+upto(2) -> [2];
+upto(Limit) -> upto(Limit, 3, [2]).
+upto(Limit, N, Primes) when N < Limit -> 
+  case is_prime(N) of
+    true  -> upto(Limit, N + 1, [N | Primes]);
+    false -> upto(Limit, N + 1, Primes)
+  end;
+upto(_, _, Primes) -> Primes.
 
 is_prime(2) -> true;
 is_prime(3) -> true;
