@@ -5,8 +5,8 @@ upto(2) -> [2];
 upto(Limit) -> upto(Limit, 3, [2]).
 upto(Limit, N, Primes) when N < Limit -> 
   case is_prime(N) of
-    true  -> upto(Limit, N + 1, [N | Primes]);
-    false -> upto(Limit, N + 1, Primes)
+    true  -> upto(Limit, N + 2, [N | Primes]);
+    false -> upto(Limit, N + 2, Primes)
   end;
 upto(_, _, Primes) -> Primes.
 
